@@ -4,7 +4,7 @@ import './App.css';
 import {Switch,Route,BrowserRouter,Link} from 'react-router-dom';
 import Home from './views/Home';
 import Register from './views/Register';
-
+import Login from './views/Login';
 
 class App extends Component {
   render() {
@@ -20,7 +20,10 @@ class App extends Component {
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to='/register'>Register</Link>
-                </li>               
+                </li>   
+                 <li className="nav-item">
+                  <Link className="nav-link" to='/login'>Login</Link>
+                </li>                  
               </ul>    
             </div>
           </nav>
@@ -29,10 +32,12 @@ class App extends Component {
             <Switch>
               <Route exact path="/" component={Home} />
               <Route path="/register" component={Register} />
+               <Route path="/login" component={Login} />
             </Switch>
         </div>
         <div className="container">
-          Footer
+          <br/><br/>
+          <h6>Footer</h6>
         </div>
       </div>
     );
