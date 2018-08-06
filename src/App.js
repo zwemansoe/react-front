@@ -2,11 +2,42 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import {Switch,Route,BrowserRouter,Link} from 'react-router-dom';
-import Home from './views/Home';
-import Register from './views/Register';
-import Login from './views/Login';
+import Home from './views/Home.js';
+import Register from './views/Register.js';
+import Login from './views/Login.js';
+import Post from './views/Post.js';
+import CreatePost from './views/CreatePost.js';
+
+ let token=localStorage.getItem('token');
+
 
 class App extends Component {
+
+  // constructor(props){
+  //   super(props);
+  // }
+
+  ShowLogin(){
+      let loginnorlogout=<Link className="nav-link" to='/login'>Login</Link>;
+      if(token){
+          loginnorlogout=<a href="" className="nav-link"  onClick={this.logout}>LogOut</a>;
+      }
+      return loginnorlogout;
+  }
+
+  
+  logout(){
+    localStorage.removeItem('token');
+    this.history.push('/');
+  }
+
+    ShowRegisterOrPost(){
+      let registerOrPost= <Link className="nav-link" to='/register'>Register</Link>
+      if(token){
+        registerOrPost=<a href="/post" className="nav-link"   to='/post' >Post</a>;
+    }
+    return registerOrPost
+  }
   render() {
     return (
       <div>
@@ -19,10 +50,10 @@ class App extends Component {
                   <Link className="nav-link" to='/'>Home</Link> 
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to='/register'>Register</Link>
+                  {this.ShowRegisterOrPost()}
                 </li>   
                  <li className="nav-item">
-                  <Link className="nav-link" to='/login'>Login</Link>
+                 {this.ShowLogin()}                
                 </li>                  
               </ul>    
             </div>
@@ -33,6 +64,8 @@ class App extends Component {
               <Route exact path="/" component={Home} />
               <Route path="/register" component={Register} />
                <Route path="/login" component={Login} />
+               <Route path="/post" component={Post} />
+               <Route path="/create-post" component={CreatePost} />
             </Switch>
         </div>
         <div className="container">

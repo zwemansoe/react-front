@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import axioApi from './../axioConfig';
+import axioApi from './../axioConfig.js';
 import qs from 'qs';
 let $this;
 export default class Register extends Component{

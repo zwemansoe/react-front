@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import axioApi from './../axioConfig';
+import axioApi from './../axioConfig.js';
 import qs from 'qs';
 let $this;
 export default class Login extends Component{
@@ -30,7 +30,11 @@ export default class Login extends Component{
 					localStorage.setItem('token',res.data.token);
 					axioApi.defaults.headers.common['x-access-token']=res.data.token;
 
-					$this.props.history.push('/');
+					// $this.props.history.push('/');
+					$this.props.history.push({
+						pathname:'/',
+						redirectfrom:'login'
+					});
 				}
 			}).catch((err)=>{
 				alert("Username password missmatch");

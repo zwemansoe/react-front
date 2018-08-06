@@ -9,7 +9,7 @@ import $ from 'jquery';
 import Popper from 'popper.js';
 // ReactDOM.render(<App />, document.getElementById('root'));
 // registerServiceWorker();
-import axioApi from './axioConfig';
+import axioApi from './axioConfig.js';
 let token=localStorage.getItem('token');
 if(token){
 	axioApi.defaults.headers.common['x-access-token']=localStorage.getItem('token');
